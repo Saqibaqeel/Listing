@@ -1,0 +1,119 @@
+
+
+*{
+    padding: 0;
+    margin: 0;
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+.container{
+    flex:1;
+}
+
+.navbar{
+    height: 5rem !important;
+    background-color: white !important;
+}
+.fa-solid {
+    color: red;
+}
+
+.nav-link{
+    color:#222222 !important ;
+    
+}
+
+
+/* footer */
+
+.f-info-links a{
+    text-decoration: none;
+
+    color: #222222;
+}
+
+
+.f-info-links a:hover{
+    text-decoration: underline;
+
+   
+}
+.f-info-socials,.f-info-links,.info-brand{
+    font-size: 1.4rem;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+
+.f-info{
+    text-align: center;
+    height: 8rem;
+    display: flex;
+    background-color: #ebebeb;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: space-evenly;
+}
+
+
+/* cars style */
+
+.card{
+    border: none;
+    margin-bottom: 2rem !important;
+}
+
+.card-img-top{
+    border-radius: 1rem !important;
+    object-fit: cover;
+
+    width: 100%;
+}
+
+.card-body{
+    padding: 0 !important;
+}
+
+.card-text p{
+    font-weight: 400 !important;
+}
+.listing-link{
+    text-decoration: none;
+}
+
+.card-img-overlay{
+
+    opacity: 0;
+
+}
+
+.card-img-overlay:hover{
+
+    opacity: 0.2;
+    background-color: white;
+
+}
+
+/* show image */
+
+.show-img{
+    height: 30vh;
+}
+
+.btns{
+    display: flex;
+}
+.show-card{
+    padding-top: 0;
+    padding-bottom: 0;
+
+}
+
+

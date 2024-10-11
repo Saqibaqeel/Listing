@@ -1,0 +1,62 @@
+<% layout('/layouts/boilerPlate') %>
+<br>
+<body>
+    <form action="/listings" method="POST">
+        
+        <!-- Bootstrap Row for Main Form -->
+        <div class="row justify-content-center">
+            <div class="col-8">
+                <h2>Add your Listing</h2>
+                
+                <!-- Title Field -->
+                <div class="mb-3">
+                    <label for="title" class="form-label">Title</label>
+                    <input type="text" name="title" id="title" placeholder="Enter your title" required class="form-control">
+                </div>
+
+                <!-- Description Field -->
+                <div class="mb-3">
+                    <label for="description" class="form-label">Description</label>
+                    <textarea name="description" id="description" placeholder="Enter description" required class="form-control" rows="4"></textarea>
+                </div>
+
+                <!-- Image Filename Field -->
+                <div class="mb-3">
+                    <label for="imageFilename" class="form-label">Image Filename</label>
+                    <input type="text" name="imageFilename" id="imageFilename" placeholder="Enter your image filename" class="form-control">
+                </div>
+
+                <!-- Image URL Field -->
+                <div class="mb-3">
+                    <label for="imageUrl" class="form-label">Image URL</label>
+                    <input type="url" name="imageUrl" id="imageUrl" placeholder="Enter your image URL" required class="form-control">
+                </div>
+
+                <!-- Price Field -->
+                <div class="mb-3">
+                    <label for="price" class="form-label">Price</label>
+                    <input type="number" name="price" id="price" placeholder="Enter your price" required class="form-control" step="0.01" min="0">
+                </div>
+
+                <!-- Row for Country and Location Fields -->
+                <div class="row">
+                    <!-- Country Field -->
+                    <div class="col-6 mb-3">
+                        <label for="country" class="form-label">Country</label>
+                        <input type="text" name="country" id="country" placeholder="Enter your country" required class="form-control">
+                    </div>
+
+                    <!-- Location Field -->
+                    <div class="col-6 mb-3">
+                        <label for="location" class="form-label">Location</label>
+                        <input type="text" name="location" id="location" placeholder="Enter your location" required class="form-control">
+                    </div>
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" class="btn btn-dark mb-2">Submit</button>
+            </div>
+        </div>
+        
+    </form>
+</body>
