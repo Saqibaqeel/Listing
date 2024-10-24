@@ -24,7 +24,7 @@
 1. Clone the repository:
    git clone https://github.com/Saqibaqeel/ExploreMore.git
 2. Install the Dependencies
-    NMp install
+    Npm install
 3. Start the server
     node index.js
    
