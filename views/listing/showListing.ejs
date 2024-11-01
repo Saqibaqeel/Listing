@@ -9,7 +9,7 @@
          
 </div>
 
-    <div class="card   col-6 offset-2 show-card">
+    <div class="card   col-6 offset-2 show-card card-listing">
 
         <img src="<%= listing.image.url %>" class="card-img-top  show-img" alt="image" >
        <div class="card-body">
@@ -41,18 +41,86 @@
 
 <div class="btns mb-3 ">
 
-    <a href="/listing/<%=listing._id%>/edit" class="btn  btn-dark col-1 offset-2 "> edit</a>
+    <a href="/listings/<%=listing._id%>/edit" class="btn  btn-dark col-1 offset-2 "> edit</a>
         
     
     
 
    
-    <form action="/listings?_method=DELETE" method="POST">
+    <form action="/listings/<%=listing._id%>?_method=DELETE" method="POST">
         <button type="submit" class="btn btn-dark  offset-4 btn-danger">Delete</button>
     </form>
 
 </div>
 <br>
+<hr>
+
+<div class="col-8 offset-2">
+    <form action="/listings/<%= listing._id %>/reviews" method="post"class="needs-validation" novalidate>
+        <h3> Give a Review</h3>
+
+        <div class="mb-3">
+            <label for="customRange2" class="form-label">Rating</label>
+            <input type="range" class="form-range" min="1" max="5" id="customRange2" name="review[rating]">
+            <div class="invalid-feedback">
+                enter review
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="comment" class="form-label">Comment</label>
+            <textarea name="review[comment]" id="comment" placeholder="Enter comment" class="form-control" required></textarea>
+            <div class="invalid-feedback">
+                please leave a comment 
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="createdAt" class="form-label">Date</label>
+            <input type="date" name="review[createdAt]"   class="form-control" required>
+            <div class="invalid-feedback">
+                enter a valid date
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-dark mb-2">Add Review</button>
+    </form>
+
+    <hr>
+<h2>All Reviews</h2>
+
+<div class="row">
+    <% if (listing.reviews.length > 0) { %>
+        <% for (let review of listing.reviews) { %>
+            <div class="col-md-6 col-lg-4 mb-4">
+                <div class="card review-card p-3 h-100">
+                    <div class="card-body">
+                        <h5 class="card-title text-primary">saqib</h5>
+                        <p class="card-text text-muted mb-2"><%= review.comment %></p>
+                        <p class="card-text rating-text">Rating: <%= review.rating %>/5</p>
+                    </div>
+                    <form action="/listings/<%= listing._id %>/reviews/<%= review._id %>?_method=DELETE" method="post">
+                        <button class="btn btn-danger btn-sm">Delete</button>
+                    </form>
+                    
+                </div>
+               
+            </div>
+
+           
+        <% } %>
+    <% } else { %>
+        <div class="col-12">
+            <p class="no-reviews">No reviews yet.</p>
+        </div>
+    <% } %>
+   
+</div>
+
+
+  
+</div>
+
 
 
 

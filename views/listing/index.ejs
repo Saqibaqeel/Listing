@@ -1,5 +1,6 @@
 <%layout('/layouts/boilerPlate')%>
 <body>
+ 
 
   
     <h2>All listing</h2>
@@ -7,8 +8,8 @@
     <div  class="row   row-cols-lg-3 row-cols-md-2 row-cols-sm-1 ">
     <% for(let listing of listings) { %>
      
-    <a href="http:/listing/<%=listing._id%> " class="listing-link">
-      <div class="card col" >
+    <a href="http:/listings/<%=listing._id%> " class="listing-link">
+      <div class="card col card-listing" >
         <img src="<%= listing.image.url %>" class="card-img-top" alt="..." style="height: 20rem;">
         <div class="card-img-overlay"></div>
         
