@@ -16,6 +16,7 @@
     <h5 class="card-title"><%=listing.title%></h5>
     <p class="card-text">
         <br>
+        <p> own by:<%= listing.owner ? listing.owner.username : "No owner specified" %> </p>
 
         <%=listing.description%> 
 
@@ -38,20 +39,17 @@
     
      
 </div>
+<% if (currentUser && listing.owner && currentUser._id.equals(listing.owner._id)) { %>
+    <div class="btns mb-3">
+        <a href="/listings/<%= listing._id %>/edit" class="btn btn-dark col-1 offset-2">Edit</a>
 
-<div class="btns mb-3 ">
+        <form action="/listings/<%= listing._id %>?_method=DELETE" method="POST">
+            <button type="submit" class="btn btn-dark offset-4 btn-danger">Delete</button>
+        </form>
+    </div>
+<% } %>
 
-    <a href="/listings/<%=listing._id%>/edit" class="btn  btn-dark col-1 offset-2 "> edit</a>
-        
-    
-    
 
-   
-    <form action="/listings/<%=listing._id%>?_method=DELETE" method="POST">
-        <button type="submit" class="btn btn-dark  offset-4 btn-danger">Delete</button>
-    </form>
-
-</div>
 <br>
 <hr>
 

@@ -115,7 +115,7 @@ passport.deserializeUser(User.deserializeUser());
   
   //for edit the listing
 
-  app.get("/listings/:id/edit",wrapAsync(async(req,res)=>{
+  app.get("/listings/:id/edit",isAuthenticate,wrapAsync(async(req,res)=>{
     let {id}=req.params;
      let editList=await Listing.findById(id);
     res.render('listing/edit.ejs',{editList});
@@ -123,7 +123,7 @@ passport.deserializeUser(User.deserializeUser());
  }))
 //  for delete
 
- app.delete('/listings/:id', wrapAsync(isAuthenticate,async (req, res) => {
+ app.delete('/listings/:id',isAuthenticate, wrapAsync(isAuthenticate,async (req, res) => {
     const { id } = req.params;
   
    
@@ -135,9 +135,12 @@ passport.deserializeUser(User.deserializeUser());
         req.flash('error', "this post not exist")
         res.redirect('/listings');
 
+    }else{
+
+        res.redirect('/listings');
     }
  
-    res.redirect('/listings');
+    
   }));
 
 
@@ -146,7 +149,7 @@ passport.deserializeUser(User.deserializeUser());
  app.put('/listings/:id',
     validate,
     
-    wrapAsync(isAuthenticate,async   (req, res) => {
+    wrapAsync(async   (req, res) => {
     const { id } = req.params;
     const { title, description, image, price, country, location } = req.body;
 
@@ -158,8 +161,7 @@ passport.deserializeUser(User.deserializeUser());
        
         res.redirect(`/listings/${id}`)
    
-        console.error('Error updating the listing:', err);
-        res.status(500).send('Internal server error');
+      
     
 }));
 
@@ -184,7 +186,7 @@ app.get('/listings',wrapAsync(async(req,res)=>{
 app.get('/listings/:id',wrapAsync(async(req,res)=>{
     let {id}=req.params
     // console.log(id)
-     let listing =await Listing.findById(id).populate('reviews');
+     let listing =await Listing.findById(id).populate('reviews').populate('owner');
      console.log("Retrieved listing:", listing); 
      res.render('listing/showListing.ejs',{listing})
 }))
@@ -214,6 +216,7 @@ app.post('/listings',
             country,
             location
         });
+        newListing.owner=req.user._id;
 
         // Save the new listing to the database
         await newListing.save();

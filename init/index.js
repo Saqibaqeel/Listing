@@ -17,10 +17,16 @@ async function main() {
     
 }
 
-const insertData =async()=>{
-   
-   await Listing.insertMany(intiData.data);
-   console.log("data inserted sucessfully")
+const insertData = async () => {
+    // Map over the data and add the 'owner' property to each object
+    intiData.data = intiData.data.map((obj) => ({
+        ...obj,
+        owner: '67233c2b5eef0c235b4fc49b'
+    }));
 
+    // Insert modified data
+    await Listing.insertMany(intiData.data);
+    console.log("Data inserted successfully");
 }
-insertData()
+
+insertData();
