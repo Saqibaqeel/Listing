@@ -45,7 +45,7 @@ const validateReview=(req,res,next)=>{
 
 }
 
-const URL='mongodb+srv://<db_username>:<db_password>@cluster0.kzg7n.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0'
+const URL='mongodb+srv://Saqib:<db_password>@cluster0.kzg7n.mongodb.net/'
 main().then(()=>{
     console.log("connection succes")
 }).catch((e)=>{
